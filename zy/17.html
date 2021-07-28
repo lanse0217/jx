@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: #000;
+        }
+        .div_1{
+            width: 500px;
+        }
+        .div_2{
+            height: 500px;
+        }
+        .div_3{
+            background: red;
+        }
+        .div_4{
+            background: #ff7899;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点击更改样式" onclick="gg()">
+    <div id="div1" ></div>
+    
+    <script>
+    var num=1;
+    var timer=0;
+    var a=0;
+    function gg(){
+    a=a+1;
+    if(a%2==1){
+        timer=setInterval(
+        function(){
+            if(num==5){
+                div1.removeAttribute("class");
+                num=1;
+            }
+            else{
+                //div1.setAttribute('class',"");省略这一步也可以
+                div1.classList.add('div_'+num);
+                num++;
+            }
+          
+        },10
+    )
+    }
+    else{
+        clearInterval(timer);
+    }
+}   
+    </script>
+</body>
+</html>

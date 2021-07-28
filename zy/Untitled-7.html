@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+<p id="demo2"></p>
+<script>
+//JSON嵌套数组
+var obj={"name":"Bill Gates","age":62,"car":[
+    {"name":"Porsche","models":["911","Taycan"]},
+    {"name":"BMW","models":["M5","M3","X5"]},
+    {"name":"Volvo","models":["XC90","V60"]},
+
+]
+};
+var x,i,j;
+for(i in obj.car){
+    x+="<h2>"+obj.car[i].name+"</h2>";
+    for(j in obj.car[i].models){
+        x+=obj.car[i].models[j]+"<br>";
+    }
+}
+document.getElementById("demo").innerHTML=x;
+</script>
+
+
+</body>
+</html>

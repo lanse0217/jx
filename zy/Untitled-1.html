@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        #container{
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background: yellow;
+        }
+        #animate{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: red;
+        }
+        #container2{
+            padding: 0px;
+            margin: 0px;
+            width: 200px;
+            height: 70px;
+            padding-top: 30px;
+            background: red;
+            text-align: center;
+            font-size: 20px;
+            color:white;
+        }
+    
+    </style>
+<body onload="checkCookies()">
+<h1 id="container2" onmouseover="myMouse(this)" onmouseout="myMouseOut(this)">鼠标移上来</h1>
+<img id='myImage' src="eg_bulboff.gif">
+<p id="p1">Hello World!</p>
+<p id="p2">Hello World!</p>
+<button type="button" onclick="myfunction()">点击改变图片</button>
+<button type="button" onclick="document.getElementById('p2').style.color='blue'">换个颜色</button>
+<button type="button" onclick="document.getElementById('p1').style.visibility='hidden'">隐藏起来</button>
+<!--JS动画-->
+<h1>我的第一个js动画</h1>
+<div id="container">
+    <div id="animate"></div>
+</div>
+<button type="button" onclick="myMove()">动画</button>
+<!--JS事件-->
+<p onclick="this.innerHTML='谢谢'">请点击此文本</p>
+<!--JS事件-->
+<p onclick="changeText(this)">再次点击此文本</p>
+<button type="button" onclick="displayDate()">时间是</button>
+<h1 id="demo2"></h1>
+<!--onchange-->
+请输入你的名字
+<input type="text" id="txt" onchange="myFunction2()">
+<script>
+    function myfunction(){
+     var x=document.getElementById('myImage');
+     x.src='eg_bulbon.gif';
+    }    
+    document.getElementById('p1').style.color="red";
+    document.getElementById('p2').style.fontSize="larger";
+    document.getElementById('p1').style.fontWeight='bold';
+    document.getElementById('p2').style.fontWeight='bold';
+    //js动画
+    function myMove(){
+        var elem=document.getElementById('animate');    
+        var pos=0;
+        var id=setInterval(frame,5);
+        function frame() {
+           if (pos==350) {
+           clearInterval(id);
+    }      else {
+           pos++;
+           elem.style.top=pos+"px";
+           elem.style.left=pos+"px";
+           document.getElementById('p1').innerHTML=typeof(pos+'px');
+         /* 改变元素样式的代码 */
+    }
+} 
+    }
+    function changeText(id){
+        id.innerHTML="谢谢";
+    }
+    function displayDate(){
+        document.getElementById('demo2').innerHTML=Date();
+        var y=document.getElementById('demo2');
+        y.style.color="green";
+        y.style.fontSize=12+'px';
+    }
+    //onload
+    function checkCookies(){
+        var x="";
+        if(navigator.cookieEnabled==true){
+            x="cookie已经启用";
+        }
+        else
+        {
+            x="cookie未启用";
+        }
+        document.getElementById('demo2').innerHTML=x;
+    }
+    //onchange
+    function myFunction2(){
+        var x=document.getElementById('txt');
+        x.value=x.value.toUpperCase();
+    }
+    //onmouse
+    function myMouse(id){
+        var x=document.getElementById('container2');
+        x.innerHTML="谢谢您";
+    }
+    function myMouseOut(id){
+        var x=document.getElementById('container2');
+        x.innerHTML="把鼠标移上来";
+    }
+</script>
+
+</body>
+</html> 

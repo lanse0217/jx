@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+        }
+        #box{
+            width: 500px;
+            height:350px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+        }
+        #tag{
+            width: 500px;
+            height: 50px;
+            background: rgb(187, 186, 186);
+        }
+        #tag li{
+            width: 100px;
+            height: 49px;
+            float: left;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+        div{
+            width: 500px;
+            height: 300px;
+            display: none;
+        }
+        #box{
+            width: 500px;
+            height:350px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            display: block;
+        }
+        .list_show{
+            background: #fff;
+            border-bottom: 1px solid #fff;
+            color: orange;
+            font-size: 16px;
+            font-weight: bold;
+            
+        }
+        .show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="tag.js"></script>
+    <script>
+        let obj={
+            tag_Arr:[{value:"公告",disabled:true},{value:"规则",disabled:true},{value:"论坛",disabled:true},{value:"安全",disabled:true},{value:"权益",disabled:true}],
+            div_Arr:[['黄晓11111明张艺兴百万物资摆满地','严峻疫情下的“谎言总动员',true],['22222222” 整个城市一片漆黑','严峻疫情下的“谎言总动员','河南救援电话 直击暴雨',true],
+            ['33333羊的城市，不在大西北','严峻疫情下的“谎言总动员','河南救援电话 直击暴雨',false]]
+        }
+        let abc=new Tag(obj);
+    </script> 
+    
+</body>
+</html>

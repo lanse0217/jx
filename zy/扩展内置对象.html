@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function myArr(){
+
+        }//创建新的构造函数
+        myArr.prototype=new Array();//使得新的构造函数的原型对象指向一个Array的实例
+        myArr.prototype.run=function(){
+            console.log("2121");//给内置对象新增新的方法
+        }
+        let arr=new myArr();
+        arr.run();
+        console.log(arr);
+    </script>
+</body>
+</html>

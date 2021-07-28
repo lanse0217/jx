@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     //父函数
+     function Person(){
+         this.name="张三";
+         this.pets=["小花",'小黑'];
+     }
+     Person.prototype.run=function(){
+         console.log('跑');
+     }
+     //子类函数
+     function Student(){
+         
+         Person.call(this);//1.构造函数继承，产生重名应该子类覆盖父类，所以父类call必须放在最前面。但是这种方式无法修改父函数里的属性值
+         this.num=2004;
+     }
+     //可以修改父类参数的借助构造函数继承
+     //父函数
+     function Person(name,pets){
+         this.name=name;
+         this.pets=pets;
+     }
+     Person.prototype.run=function(){
+         console.log('跑');
+     }
+     //子类函数
+     function Student(num,name,pets){
+         
+         Person.call(this,name,pets);//1.构造函数继承，产生重名应该子类覆盖父类，所以父类call必须放在最前面。但是这种方式无法修改父函数里的属性值
+         this.num=num;
+    //
+
+     
+     }
+     let s1=new Student(2993,"王五",29);
+     console.log(s1);
+     //
+      /* let p=new Person();
+      let s1=new Student();
+      let s2=new Student();
+      s1.name="李四";
+      console.log(s1.name);
+      console.log(s2.name);
+      s1.pets.push("大黄");
+      console.log(s1.pets);
+      console.log(s2.pets);
+      console.log(p); */
+      //构造函数式继承似乎不会有共享数据的问题，但是原型链继承里的复杂数据类型会，简单类型不会
+      //寄生式继承
+      function Temp(){};
+      Temp.prototype=Person.prototype;
+      let temp=new Temp();
+      Student.prototype=temp;
+      temp.costructor=Student;
+    </script>
+</body>
+</html>

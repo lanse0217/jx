@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>把 JavaScript 对象转换为 JSON 字符串，然后发送到服务器。</h2>
+<p id="demo"></p>
+<script>
+    var text='{"employees":['+
+             '{"firstname":"Bill","lastname":"Gates"},'+
+             '{"firstname":"Steven","lastname":"Jobs"},'+
+             '{"firstname":"Elon","lastname":"Musk"}]}';
+    obj=JSON.parse(text);
+    document.getElementById('demo').innerHTML=obj.employees[1].firstname+""+obj.employees[1].lastname;
+              
+</script>
+
+</body>
+</html>

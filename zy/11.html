@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #mydiv{
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="mydiv"></div>
+    <script>
+        var myDiv=document.getElementById("mydiv");
+        myDiv.onclick=abc;
+        var width=200;
+        var height=200;
+        var timer=null;
+        function abc(){
+            clearTimeout(timer);
+            timer=setInterval(
+                function(){
+                    if(width==window.innerWidth){
+
+                    }
+                    else{
+                      width=width+1;
+                    }
+                    if (height==window.innerHeight) {
+                        
+                    }
+                    else{
+                      height=height+1
+                    }
+                    
+                    myDiv.style.width=width+"px";
+                    myDiv.style.height=height+"px";
+                },3
+            )
+                
+           
+        }
+    </script>
+</body>

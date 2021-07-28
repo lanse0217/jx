@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        @import url("mask.css");
+    </style>
+</head>
+<body>
+
+    <div id="myMask"></div>
+    
+    <script src="mask3.js"></script>
+    <script>
+       var obj={
+        parentNode:"myMask",
+        img_arr:["image/01.jpg","image/02.jpg"]
+    }
+       
+       var abc=new Mask(obj);//创建对象实例
+    //调用方法;
+       
+       abc.mouseover();
+       abc.mousemove();
+       abc.mouseout();
+       
+      
+    </script>
+</body>
+</html>

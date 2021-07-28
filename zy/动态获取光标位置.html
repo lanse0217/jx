@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 500px;
+            height: 500px;
+            background: #ff0000;
+            margin: 100px auto;
+        }
+        body{
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        window.addEventListener('load',function(){
+            $('box').addEventListener('mousemove',function(event){
+                let x= event.pageX-$('box').offsetLeft;
+                let y=event.pageY-$('box').offsetTop;
+                $('box').innerHTML=`(${x},${y})`;
+            })
+        })
+        //
+        function $(id){
+                return typeof(id)==="string"? document.getElementById(id) : null;
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       /* var strTime="2011-04-16";    //字符串日期格式            
+       var date= new Date(Date.parse(strTime.replace(/-/g,  "/")));      //转换成Data(); 
+       console.log(date); */
+       //时间戳转日期格式 
+      var formatDateTime3 = function(time, format){ 
+          var t = new Date(time); 
+          var tf = function(i){return (i < 10 ? '0' : '') + i}; 
+          return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a){ 
+              switch(a){ 
+                  case 'yyyy': 
+                      return tf(t.getFullYear()); 
+                      break; 
+                  case 'MM': 
+                      return tf(t.getMonth() + 1); 
+                      break; 
+                  case 'mm': 
+                      return tf(t.getMinutes()); 
+                      break; 
+                  case 'dd': 
+                      return tf(t.getDate()); 
+                      break; 
+                  case 'HH': 
+                      return tf(t.getHours()); 
+                      break; 
+                  case 'ss': 
+                      return tf(t.getSeconds()); 
+                      break; 
+              } 
+          }) 
+      }; 
+        var time1='2016-01-01 17:22:37';
+        var date=new Date(time1.replace(/-/g, '/'));  //开始时间 
+        var time2=date.getTime(); 
+       
+   </script> 
+</body>
+</html>

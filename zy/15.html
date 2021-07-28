@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #div1{
+        width: 100px;
+        height: 100px;
+        background: #ff0000;
+        float: left;
+    }
+    #div2{
+        width: 100px;
+        height: 100px;
+        background: #2aac19;
+        float: left;
+    }
+    #ipt{
+        width: 300px;
+        height: 30px;
+        background: #2e39ce;
+        float: left;
+    }
+    
+</style>
+</head>
+<body>
+
+<div id="oDiv">
+<span>1111</span>
+</div>
+<script>
+var oIput=document.createElement('input');//构建一个input元素
+oDiv.replaceChild(oIput,oDiv.children[0]);//替换元素
+oIput.id='ipt';
+    
+</script> 
+</body>
+</html>

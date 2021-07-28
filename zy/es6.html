@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.let在同一作用域里不能重复定义
+        /* let str="张三";
+        let str="李四";
+        console.log(str); */
+
+        //2.let没有变量提升
+       /*  console.log(str);
+        let str="张三"; */
+        //3.let支持块级作用域
+        /* for(let i=0;i<10;i++){
+        }
+        console.log(i); */
+
+        //4.const用于定义常量
+        /* const STR="XX";
+        STR ='hhhh';//常量是不可以重复定义的
+        console.log(STR);    */    
+        
+        // 1.数组的解构
+        let arr=["1",'2','3'];
+        let[p1,p2,p3]=arr;
+        p1=p1+"2333";
+        console.log(p1,p2,p3);
+
+        //2.对象的解构
+        let obj={
+            name:"lina",
+            age:29,
+            sex:"女",
+            eat:function(){
+                console.log("通常在十二点吃午饭");
+            },
+            firends:[{name:"lei",age:38,sex:"男"},{name:"vicent",age:45,sex:"男"}]
+        }
+        console.log(obj);
+        let{name,age,sex,eat,firends}=obj;
+        console.log(eat,firends);//firends是数组
+        //继续解构firends数组
+        let[p4,p5]=firends;//这p4,p5还不能跟上面的p1p2p3同名
+        console.log(p4,p5);
+    </script>
+</body>
+</html>

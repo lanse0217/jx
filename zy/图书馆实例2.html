@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       //1.书籍构造函数
+       function Book(bookID,bookName,bookPrice,oldLevel){
+           //属性
+           this.bookID=bookID;
+           this.bookName=bookName;
+           this.bookPrice=bookPrice;
+           this.oldLevel=oldLevel;
+       }
+       //书籍描述
+       Book.prototype.desc=function(){
+           return `ID:${this.bookID},书名：${this.bookName},价格：${this.bookPrice},新旧程度：${this.oldLevel}`;
+       }
+
+
+       //2.图书馆构造函数
+       function Library(libName){
+           this.libName=libName;
+           //私有属性,是个对象数组
+           store=[];
+           //私有函数，监测书籍的新旧程度
+           function isOldBook(bookObj){
+               if(bookObj.oldLevel<=0){
+                   bookObj.oldLevel=0;
+                   return true;
+               }
+               return false;//不是旧书
+           };
+       }
+       
+       //书籍存入方法
+       Library.prototype.save=function(bookObj){
+          
+            
+                store.push(bookObj);
+                console.log('图书馆已经存入：'+bookObj.bookName);
+            
+
+          
+              
+           
+       }
+       //借出书籍方法
+       Library.prototype.borrow=function(bookID){
+           //先查找有没有这本书
+           for(var i=0;i<store.length;i++){
+               //var bookObj=store[i];
+               if(store[i].bookID===bookID){
+                   break;
+               }
+           }
+           if(i==store.length){
+               console.log("找不到这本书");
+               return;
+           }
+           //借出这本书
+           let borrowBook=store.splice(i,1)[0];
+           console.log(`图书馆成功出借：${borrowBook.desc()}`);
+           return borrowBook;
+       }
+
+       //查找全部书籍
+    Library.prototype.queryAllBook=function(){
+        let result="目前存书有:\n";
+        for(let i=0;i<store.length;i++){
+            let bookObj=store[i];
+            result+=bookObj.desc()+'\n';
+        }
+        console.log(result);
+    }
+       //查找某一本书籍
+       Library.prototype.queryById=function(bookID){
+        for(var i=0;i<store.length;i++){
+               //var bookObj=store[i];
+               if(store[i].bookID===bookID){
+                   break;
+               }
+           }
+           if(i==store.length){
+               console.log("找不到这本书");
+               return;
+           }
+           //输出这本书的信息
+           let queryBook=store[i];
+           console.log(`找到ID为:${queryBook.bookID}的书：${queryBook.desc()}`);
+           return queryBook;
+       }
+
+       
+   </script>
+   <script>
+       function Person(name,age,oldStep){
+           this.name=name;
+           this.age=age;
+           this.oldStep=oldStep;
+           this.store=[];
+       }
+       Person.prototype={
+           constructor:Person,
+           //借入图书
+           saveBook:function(bookObj){
+               console.log(this.name+'成功借入书籍：'+bookObj.bookName);
+               this.store.push(bookObj);
+           },
+           //阅读这本书
+           readBook:function(bookID){
+            for(var i=0;i<this.store.length;i++){
+               var bookObj=this.store[i];
+               if(bookObj.bookID===bookID){
+                   break;
+               }
+           }
+           if(i==this.store.length){
+               console.log("找不到这本书");
+               return;
+           }
+           
+           bookObj.oldLevel-=this.oldStep;
+           console.log(`成功阅读：${bookObj.bookName}`);
+           //return readBook;
+           
+           },
+           //还书
+           backBook:function(bookID){
+            for(var i=0;i<this.store.length;i++){
+               //var bookObj=store[i];
+               if(this.store[i].bookID===bookID){
+                   break;
+               }
+           }
+           if(i==this.store.length){
+               console.log("您的书库中没有这本书");
+               return;
+           }
+           //归还这本书
+           let backBook=this.store.splice(i,1)[0];
+           console.log(`准备归还：${backBook.bookName}这本书`);
+           return backBook;
+           }
+       }
+       //教师构造函数
+       function Teactor(name,age,money){
+           Person.call(this,name,age,2);
+           this.money=money;
+       }
+       //寄生式继承
+       function Obj(){};
+       Obj.prototype=Person.prototype;
+       let obj=new Obj();
+       Teactor.prototype=obj;
+       obj.constructor=Teactor;
+       //
+       let san=new Teactor("lucy",'28',6000);
+       console.log(san);
+       //学生构造函数
+       function Student(name,age,grade){
+           Person.call(this,name,age,4);
+           this.grade=grade;
+       }
+       //寄生式继承
+       function Temp(){};
+       Temp.prototype=Person.prototype;
+       let temp=new Temp();
+       Student.prototype=temp;
+       temp.constructor=Student;
+       //
+       //
+       let book1=new Book('TS0001','js基础',20.00,10);
+       let book2=new Book('TS0002','js进阶',30.00,5);
+       let book3=new Book('TS0003','js高级',60.00,8);
+       let book4=new Book('TS0004','颈椎病治疗秘籍',300.00,10);
+       console.log(book1.desc());
+       console.log(book2.desc());
+       console.log(book3.desc());
+       console.log(book4.desc());
+       let library=new Library("逸夫图书馆");
+    
+       library.save(book1);
+       library.save(book2);
+       library.save(book3);
+       library.save(book4);
+       //图书馆出借
+       let bBook=library.borrow("TS0002");
+       let bBook2=library.borrow("TS0001");
+       console.log(bBook);
+       //学生借入
+       let stu=new Student("lili",18,2);
+       console.log(stu);
+       stu.saveBook(bBook);
+       stu.saveBook(bBook2);
+       console.log(stu.store);
+       //学生阅读
+       stu.readBook("TS0002");
+       stu.readBook("TS0001");
+
+       
+       //学生还书
+       stu.backBook("TS0001");
+       stu.backBook("TS0002");
+       console.log(book2);
+       //放入图书仓库
+       library.save(bBook);
+
+      
+
+       
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        #father{
+            width: 300px;
+            height: 300px;
+            background: #f82991;
+            padding: 20px;
+            position:relative;
+            margin: 100px;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+            border: 5px solid #000;
+            padding: 10px;
+            margin: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+    <div id="box"></div>
+    </div>
+    <script>
+       window.addEventListener('load',()=>{
+           console.log($('box').offsetWidth,$('box').offsetHeight);
+           console.log($('box').offsetTop,$('box').offsetLeft);
+       })
+       
+       
+       //
+       function $(id){
+           return typeof(id)==="string"? document.getElementById(id) : null;
+       }
+    </script>
+</body>
+</html>

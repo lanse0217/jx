@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            display: none;
+        }
+        .active{
+            background: #ff0000;
+        }
+        .show{
+            display: block;
+        }
+        input{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="aa" class="active">
+    <input type="button" value="bb">
+    <input type="button" value="cc">
+    <div class="show">第1个</div>
+    <div>第2个</div>
+    <div>第3个</div>
+    <script>
+    //获取所有的input对象
+    var allInput=document.getElementsByTagName('input');
+    //获取所有div
+    var allDiv=document.getElementsByTagName('div');
+    //点击哪个标签，就赋予哪个input active的class属性
+    for(i=0;i<allInput.length;i++){//给每一个按钮都赋予一个点击事件。
+        allInput[i].setAttribute("index",i);//给每一个按钮赋予一个index属性。for循环过程中，如果没有点击事件，则class事件暂时看不到，
+        allInput[i].onclick=function(){
+            for(i=0;i<allInput.length;i++){
+                allInput[i].className="";//先清空全部input的属性
+                allDiv[i].className="";//先清空所有div的属性
+            }
+            this.className="active";//再赋予当前按钮active属性
+                allDiv[i].className="show";//根据当前input中的index值来查找当前的div元素下标。
+       
+       
+       
+       
+        }
+        
+    }
+    </script>
+</body>
+</html>

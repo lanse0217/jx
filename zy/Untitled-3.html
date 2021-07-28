@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+    #container{
+            padding: 0px;
+            margin: 0px;
+            width: 200px;
+            height: 70px;
+            padding-top: 30px;
+            background: red;
+            text-align: center;
+            font-size: 20px;
+            color:white;
+        }
+    #myDiv1, #myDiv2,#myDiv3 {
+            background-color: coral;
+            padding: 50px;
+}
+
+    #myP1, #myP2 {
+            background-color: white; 
+            font-size: 20px;
+            border: 1px solid;
+            padding: 20px;
+}
+</style>
+<!--mousedown&mouseup&onclick-->
+<div id="container" onmousedown="myDown(this)" onmouseup="myUp(this)">按下鼠标</div>
+<h1 onmouseover="this.style.color='red'" onmouseout="this.style.color='black'">鼠标移动到此文本上</h1>
+<!---获得和失去焦点-->
+<input type="text" onfocus="myFocus(this)" onblur="myBlur(this)">
+<input type="text" onfocus="myFocus(this)" onblur="myBlur(this)">
+<input type="text" onfocus="myFocus(this)" onblur="myBlur(this)">
+<input type="text" onfocus="myFocus(this)" onblur="myBlur(this)">
+<p id="demo4"></p>
+<!---监听-->
+<button type="button" id="myBtn">试一试</button>
+<button type="button" id="myBtn2">试一试</button>
+<div id="myDiv1">
+    <h2>Bubbling:</h2>
+    <p id="myP1">1111111111111111111111111</p>
+</div>
+<br>
+<div id="myDiv2">
+    <h2>Bubbling:</h2>
+    <p id="myP2">1111111111111111111111111</p>
+</div>
+<div id="myDiv3" style="color: seashell;">这个 div 元素有一个 onmousemove 事件处理程序，每次在这个橙色字段中移动鼠标时都会显示一个随机数。
+<button type="button" onclick="removeFunction()">删除</button>
+
+</div>
+<p id="demo5"></p>
+<script>
+function myDown(obj){
+    obj.innerHTML="松开鼠标";
+    obj.style.backgroundColor="#999223";
+}
+
+function myUp(obj){
+    obj.innerHTML="谢谢您";
+    obj.style.backgroundColor="#767281";
+}
+//获得和失去焦点
+function myFocus(obj){
+    obj.style.backgroundColor="red";
+}
+function myBlur(obj){
+    obj.style.backgroundColor="white";
+}
+//添加监听事件
+document.getElementById('myBtn').addEventListener("click",myFunction3);
+function myFunction3(){
+    alert('helloworld!');
+}
+//窗体对象添加监听事件
+window.addEventListener("resize",function(){document.getElementById('demo4').innerHTML=Math.random();});
+//添加带参数的函数监听事件
+var p1=9192,p2=4;
+var p=document.getElementById('myBtn2');
+p.addEventListener('click',function(){myFunction3(p1,p2);});
+function myFunction3(a,b){
+    var result=a*b;
+    document.getElementById("demo4").innerHTML=result;
+}
+//冒泡先内侧再外侧
+document.getElementById('myDiv1').addEventListener("click",function(){alert("aaaaaaaaa");},false);
+document.getElementById('myP1').addEventListener("click",function(){alert("bbbbbbbbb");},false);
+//捕获先外侧再内测
+document.getElementById('myDiv2').addEventListener("click",function(){alert("CCCCC");},true);
+document.getElementById('myP2').addEventListener("click",function(){alert("ddddddd");},true);
+//移除监听事件
+document.getElementById('myDiv3').addEventListener("mousemove",myFunction4);
+function myFunction4(){
+    document.getElementById('demo5').innerHTML=Math.random();
+}
+function removeFunction(){
+    document.getElementById('myDiv3').removeEventListener('mousemove',myFunction4);
+    document.getElementById('demo5').innerHTML="";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <button id="btn" onclick="chang()">显示和隐藏</button>
+    <div id="mydiv" style="width: 300px; height: 400px; background-color: blueviolet; border: 1px solid #000;"></div>
+    <script type="text/javascript">
+     var num=0;
+     function chang(){
+         num+=1;
+         var f=document.getElementsByTagName("div");
+         if(num%2==1){
+         f[0].style.cssText+="width:200px;height:1000px;background:red;";
+        }
+        else{
+         f[0].style.cssText+="width:500px;height:400px;background:blue;"; 
+        }
+     }
+     var mo=document.getElementById("mydiv");
+     mo.onmouseover=function(){
+         mo.style.height="700px";
+     }
+     mo.onmouseout=function(){
+         mo.style.height="400px";
+     }
+
+     
+     /*        var a="hello world!";
+        a=a.replace(/l/g,"a");
+        console.log(a);
+    //1
+        var myarr=a.split("");
+        function rep(){
+            for(i=0;i<myarr.length;i++){
+                if (myarr[i]=='l') 
+                {
+                   myarr[i]="q";   
+                }
+            }
+           a=myarr.join("");
+           console.log(a);
+        }
+        rep();
+    //2
+     var b="";
+     function rep2(){
+         for(i=0;i<a.length;i++){
+             if (a[i]=="l") {
+                 b=b.concat("q");               
+             }
+             else
+             {
+                 b=b.concat(a[i]);
+             }
+         }
+         console.log(b);
+     }
+     rep2();
+     
+    //3 
+//
+var e=false-true;
+function d(){
+    e=e+true;
+    document.write(e);
+    setTimeout(
+        function(){
+            d();
+        },500
+    )
+};
+d();
+*/
+//
+/*
+function abc(){
+    setTimeout(
+        function(){
+            document.getElementById("mydiv").style.width="200px";
+            document.getElementById("mydiv").style.height="200px";
+        },2000
+    )
+}
+window.onload=abc();
+
+window.load=function(){
+    setTimeout(
+        function(){
+            document.getElementById("mydiv").style.width="200px";
+            document.getElementById("mydiv").style.height="200px";
+        },2000
+    )
+}  
+*/ 
+//   
+</script>    
+    
+    
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function myFunction(){
+           document.getElementById('wenzi').innerHTML='文字已经被更改';
+        }
+    </script>
+<body>
+
+<h2>我的第一段 JavaScript</h2>
+<p>1111111</p>
+<p>22222222</p>
+<p>13121</p>
+<p>2254444422</p>
+<p>1155555511</p>
+<p>666666662</p>
+<button type="button" onclick="document.getElementById('myImage').src = 'eg_bulbon.gif'">开灯</button>
+<img id="myImage" border="0" src="eg_bulbon.gif" style="text-align: center;">
+<button type="button" onclick="document.getElementById('myImage').src = 'eg_bulboff.gif'">关灯</button>
+<p id="wenzi" style="text-align: left; font-size: 14px; ">Javascript 能够改变 HTML 元素的样式。</p>
+<button type="button" onclick="document.getElementById('wenzi').style.fontSize='25px'">点击我</button>
+<button type="button" onclick="document.getElementById('wenzi').style.fontSize='14px'">还原</button>
+<button type="button" onclick="document.getElementById('wenzi').style.display='none'">隐藏我</button>
+<button type="button" onclick="document.getElementById('wenzi').style.display='block'">显示我</button>
+<button type="button" onclick="myFunction()">改变文字</button>
+<button type="button" onclick="document.write('neversaygoodbye')">试一试</button>
+<button type="button" onclick="myFunction2()">zai试一试</button>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4">通过 id 查找 HTML 元素</p>
+<p id="demo6">通过 id 查找 HTML 元素</p>
+<p id="demo5"></p>
+<p id="demo7"></p>
+<div id="main">
+    <p>88888</p>
+    <p>22222222</p>
+    <p>13121</p>
+    <p>2254444422</p>
+    <p>1155555511</p>
+    <p>666666662</p>
+</div>
+<p id="demo8"></p>
+<p class="intro">DOM 很有用</p>
+<p class="intro">本例演示 <b>getElementsByClassName</b> 方法。</p>
+<p id="demo9"></p>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<h1 id="header">Old Header</h1>
+<form id="frm1" action="/demo/action_page.php">
+    First name: <input type="text" name="fname" value="Bill"><br>
+    Last name:  <input type="text" name="lname" value="Gates"><br><br>
+    <input type="submit" value="提交">
+</form> 
+<p id="demo12"></p>
+<script>
+    document.getElementById('demo2').innerHTML='12299192';
+    window.alert(11);
+    var x,y,z;//语句1
+    $x=22;
+    y=211;
+    z=$x+y;
+    var w=++$x;
+    w+=9;
+    var b=911+'abndpie';
+    var c=typeof(b);
+    document.getElementById('demo2').innerHTML="Z的值是"+z+"。"+"W的值是："+" "+w+" "+"b的值是："+b+c;
+    //JS对象
+        var person={
+        firstName:"Bill",
+        lastName:"Gates",
+        age:62,
+        eyeColor:"blue"
+        };
+    //调用函数
+    document.getElementById('demo2').innerHTML=person.firstName+"is"+person.age+"years old ";
+    function myFunction2(a,b){
+        return a*b;
+    }
+    var d=myFunction2(3,19);
+    
+    document.getElementById("demo4").innerHTML=d;
+    //通过ID查找元素
+    var myElement=document.getElementById('demo6');
+    document.getElementById('demo5').innerHTML="来自intro段落的文本是："+myElement.innerHTML;
+   //通过标签名字查找元素
+    var e=document.getElementsByTagName('p');
+    document.getElementById('demo7').innerHTML="第一个P中显示的内容是："+e[0].innerHTML;
+    //通过id查找mian,l再通过标签查找main中的P元素
+    var f=document.getElementById('main');
+    var g=f.getElementsByTagName('p');
+    document.getElementById("demo8").innerHTML="main元素中第一个p元素是："+g[0].innerHTML;
+    //通过类名查找HTML元素不适用于 Internet Explorer 8 及其更早版本。
+    var h=document.getElementsByClassName('intro');
+    document.getElementById('demo9').innerHTML="intro的第一段是："+h[0].innerHTML;
+    //按照CSS查询选择器查找HTML元素
+    var m=document.querySelectorAll("p.intro");
+    document.getElementById('demo10').innerHTML=m[1].innerHTML;
+    //通过 HTML 对象选择器查找 HTML 对象.要用方括号
+    function myFunction2(){
+        var n=document.forms['frm1'];
+        var text="";
+        var i;
+        for(i=0;i<n.length;i++){
+            text+=n.elements[i].value+"<br>";
+        }
+        document.getElementById('demo12').innerHTML=text;
+    }
+    var o=document.getElementById('header');
+    o.innerHTML="新标题";
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #time{
+            text-align: center;
+            font-size: 60px;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="time">距离放假还剩：</div>
+    <script>
+        window.addEventListener('load',()=>{
+            let nextDate=new Date("2021/11-11 00:00:00");//设置未来的日期
+           //console.log(nextDate);
+        setInterval(function(){
+            let currentDate=new Date();
+            let currentTime=currentDate.getTime();
+            let nextTime=nextDate.getTime();
+            let allTime=nextTime-currentTime;
+            //console.log(allTime);
+            let allseconds=Math.floor( allTime / 1000);
+            let d=formate(Math.floor(allseconds/3600/24));//天
+            let h=formate(Math.floor(allseconds / 3600 % 24));//小时
+            let m=formate(Math.floor(allseconds / 60 %60));//分钟
+            let s=formate(Math.floor(allseconds%60));//秒
+
+        //写入。
+        $('time').innerHTML=`倒计时${d}天${h}小时${m}分${s}秒`;
+        },1000);
+         //封装函数
+        function formate(num){
+            return num<10? "0"+num:num;
+        }
+        function $(id){
+            return typeof(id)==='string'? document.getElementById(id) : null;
+        }
+
+        
+        
+    })
+
+    </script>
+</body>
+</html>

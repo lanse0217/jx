@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+       body{
+           padding: 0px;
+           margin: 0px;
+           position: relative;
+           background: #301290;
+       }
+       #myDiv{
+           width: 50px;
+           height: 50px;
+           position: relative;
+           left: 0px;
+           top: 0px;
+           background:red;
+       }
+    </style>
+</head>
+<body>
+    <div id="myDiv">
+        
+    </div>
+    <div id="div2">
+        <div></div>\
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+        
+        /*function toNum(){
+            var num=Math.random()*256+"";
+            return parseInt(num);
+        }
+        onresize=function(){
+            //console.log(toNum());
+            document.body.style.background='rgb('+toNum()+','+toNum()+','+toNum()+')';
+            
+        }
+        //
+        myDiv=document.getElementById("myDiv");
+        myDiv.onmouseover=function(){
+            myDiv.style.left=Math.random()*(innerWidth-50)+'px';
+            myDiv.style.top=Math.random()*(innerHeight-50)+'px';
+        }
+        */
+        //点击一下就抖动再点一下就停止
+        myDiv=document.getElementById("myDiv");
+        var timer=null;
+        var a=0;
+        //获取一个0-1的随机数
+        function toNum2(){
+            var num=Math.random()*-8+4+"";//这个结果是一个字符串
+            return num.substring(0,num.indexOf("."));
+            //console.log(num);
+            
+           
+        }
+        
+        //窗口抖动的函数
+        function dd(){
+            clearInterval(timer);
+            timer=setInterval(
+                function(){
+                    a++;//设置一个计数器
+                    if(a==40){//当抖动了40/2=20次的时候，停止抖动，窗口复位，计数器清零，关闭轮循
+                        clearInterval(timer);
+                        a=0;
+                        document.body.style.left=0+'px';
+                        document.body.style.top=0+'px';
+                    }
+                    else{//
+                        document.body.style.left=toNum2()+'px';
+                        document.body.style.top=toNum2()+'px';
+                    }
+                    
+                },2
+            );
+            
+        }
+        //鼠标点击触发的函数
+        myDiv.onclick=function(){
+            
+            dd();
+        }
+        
+      
+    </script>
+</body>

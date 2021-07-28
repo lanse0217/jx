@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        @import url("mask.css");
+    </style>
+</head>
+<body>
+
+    <div id="myMask"></div>
+    <script src="mytool/mytool.js"></script>
+    <script src="mask3.js"></script>
+    <script>
+       
+        var obj={
+            parentNode:"myMask",//父级id
+            img_arr:[{url:"image/01.jpg",disabled:false},
+                     {url:"image/02.jpg",disabled:true},
+                     {url:"image/98.png",disabled:true},
+                     {url:"image/99.png",disabled:true}],//图片地址
+            //li_num:3,   //  轮播数量
+            b_Size:600,//大图尺寸
+            m_Size:300,//中图尺寸
+            s_Size:50//小图尺寸
+        }
+       var bc=new Mask(obj);//创建对象实例
+
+    </script>
+</body>
+</html>

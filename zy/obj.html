@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      div{
+          position: relative;
+      }  
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        /* function Dog(name,age,gender){
+            //属性
+            this.name=name;
+            this.age=age;
+            this.gender=gender;
+            //方法
+            this.eat=function(foods){
+                console.log("这只狗叫："+this.name+',在吃'+foods);
+            }
+            this.run=function(someWhere){
+                console.log(this.name+'在'+someWhere+"跑");
+            }
+        }
+        //创建对象
+        var smallDog=new Dog('旺财',1,'母');
+        smallDog.eat('奶');
+        smallDog.run('家里'); */
+        /* function Dog(option){
+            //只留下属性了
+            this.name=option.name;
+            this.age=option.age;
+            this.gender=option.gender; */
+            //方法
+            /* this.eat=function(foods){
+                console.log("这只狗叫："+this.name+',在吃'+foods);
+            }
+            this.run=function(someWhere){
+                console.log(this.name+'在'+someWhere+"跑");
+            } */
+        /* } */
+        //拿到原型对象
+        //console.log(Dog.prototype);
+        //方法2多用于在实际开发中原有的原型基础上增加属性和方法
+        /* Dog.prototype.eat=function(foods){
+                console.log("这只狗叫："+this.name+',在吃'+foods);
+           };
+        Dog.prototype.run=function(someWhere){
+                console.log(this.name+'在'+someWhere+"跑");
+           };
+        console.log(Dog.prototype); */
+        //方法3多用于自己新创建的原型对象，但是会将原有原型对象的属性和方法都覆盖掉
+        /* Dog.prototype={
+           constructor:Dog,//需要重新将constructor指针链接回去
+           eat:function(foods){
+                console.log("这只狗叫："+this.name+',在吃'+foods);
+           },
+           run:function(someWhere){
+                console.log(this.name+'在'+someWhere+"跑");
+           }
+        }
+        console.log(Dog.prototype); */
+        /* Dog.prototype.eat=function(foods){
+                console.log("这只狗叫："+this.name+',在吃'+foods);
+        };
+        Dog.prototype.run=function(someWhere){
+                console.log(this.name+'在'+someWhere+"跑");
+            } */
+        //不同实例化的对象都调用同一个地址上的方法
+
+
+        //创建对象
+        /* var sOption={name:'旺财',age:1,gender:'母'};
+        var smallDog=new Dog(sOption);
+        smallDog.eat("狗粮");
+        // console.log(smallDog.__proto__);//从smallDog实例找到Dog的原型对象。
+        
+
+        var bOption={name:'阿福',age:10,gender:'公'};
+        var oldDog=new Dog(bOption);
+        oldDog.eat("骨头"); */
+        // console.log(oldDog.__proto__);
+        //验证函数地址是否一致
+
+
+        //----------------------------------------------------
+        //console.log(Array.prototype);
+
+        //创建不同的矩形对象
+        var arr=['parentNode','left','top','width','height','bgColor','radius']
+         function Rect(option){
+             var option=option || "";//option并非一定有参数传进来。没传进来就是空对象，使用默认值创建矩形
+             this.parentNode=option.parentNode || "box";
+             this.left=option.left || 100;
+             this.top=option.top || 100;
+             this.width=option.width || 100;
+             this.height=option.height || 100;
+             this.bgColor=option.bgColor || "#000";
+             this.radius=option.radius || 0;
+         }
+         //添加原型对象方法
+         Rect.prototype={
+             //1.链接指针
+             Constructor:Rect,
+             creatRect:function(){
+            // 2.创建DIV
+                 var fatherNode=document.getElementById(this.parentNode);//获取父节点
+                 var childNode=document.createElement("div");//创建新的div节点
+                 fatherNode.appendChild(childNode);//把新的div节点插入父节点中
+                 //绑定样式属性
+                 childNode.style.width=this.width+'px';
+                 childNode.style.height=this.height+'px';
+                 childNode.style.borderRadius=this.radius;
+                 childNode.style.top=this.top+'px';
+                 childNode.style.left=this.left+'px';
+                 childNode.style.background=this.bgColor;
+             }
+         }
+         //创建option对象
+         var option2={
+             parentNode:"box2",
+             left:200,
+             top:200,
+             width:300,
+             height:300,
+             bgColor:"#ff0000",
+             radius:"50%"
+         }
+         //实例化对象
+         var juxing=new Rect(option2);
+         console.log(juxing.creatRect());//调用原型对象里的方法
+        
+    </script>
+</body>
+</html>

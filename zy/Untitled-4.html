@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1 id="demo4"></h1>
+<h1 id="demo">我的第一个网站</h1>
+<h1 id="demo3"></h1>
+<p id="demo2"></p>
+<div id="div1">
+<p id="p1">我是第一行</p>
+<p id="p2">我是第二行</p>
+</div>
+<div id="div2">
+    <p id="p3">我是第三行</p>
+    <p id="p4">我是第四行x</p>
+</div>
+<button type="button" onclick="myFunction()">试一试</button>
+<button type="button" onclick="myBack()">后退</button>
+<!---延迟函数-->
+<button type="button" onclick="stop1=setTimeout(myFunction2,3000)">延迟函数</button>
+<button type="button" onclick="clearTimeout(stop1)">停止</button>
+<button type="button" onclick="clearInterval(myVar)">停止计时</button>
+<script>
+//setInterval
+var myVar=setInterval(myTimer,1000);
+function myTimer(){
+    var d=new Date();
+    document.getElementById("demo4").innerHTML=d.toLocaleTimeString();
+}
+//延迟函数
+function myFunction2(){
+    alert("延迟函数");
+}
+
+//
+function myBack(){
+    window.history.back();
+}
+document.getElementById('demo2').innerHTML=document.getElementById('demo').firstChild.nodeName;
+//添加新元素（作为父节点的最后一个子节点）
+//先创建新的元素节点h2
+var x=document.createElement('h2');
+//再创建该元素节点下的文本节点
+var y=document.createTextNode('三大纪录');
+//向元素节点X追加文本节点，获得新的元素节点
+x.appendChild(y);
+//获取现有的元素节点
+var z=document.getElementById('div1');
+//将新的元素节点追加到原有的元素节点
+z.appendChild(x);
+
+//添加新元素（可添加到现有的某个子节点前面）
+//先创建新的元素节点h2
+var a=document.createElement('h2');
+//再创建该元素节点下的文本节点
+var b=document.createTextNode('八项注意');
+//向元素节点X追加文本节点，获得新的元素节点
+a.appendChild(b);
+//获取现有的元素节点
+var c=document.getElementById('div2');
+var d=document.getElementById('p4');
+//将新的元素节点追加到原有的元素节点
+c.insertBefore(a,d);
+//删除子节点，需要知道父节点。
+c.removeChild(d);
+var e=document.getElementById('p3');
+//不获取父节点时候删除子节点。先找到他的父节点。
+e.parentNode.removeChild(e);
+//替换子节点,也需要知道父节点。
+var f=document.getElementById('p2');
+z.replaceChild(x,f);
+//DOM 集合
+var myCollection=document.getElementsByTagName('p');
+document.getElementById('demo').innerHTML='第二段的innerHTML是：'+myCollection[1].innerHTML;
+document.getElementById('demo3').innerHTML='此文档包含:'+myCollection.length+'段文字';
+function myFunction(){
+    var myCollection=document.getElementsByTagName('p');
+    var i;
+    for(i=0;i<myCollection.length;i++){
+    myCollection[i].style.color='red';
+}
+}
+//NodeList
+var g=document.querySelectorAll('p');
+document.getElementById('demo').innerHTML='第二段的innerHTML是：'+g[0].innerHTML;
+//BOM窗口
+var t = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+var s = window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
+document.getElementById('demo4').innerHTML='浏览器窗口高度为:'+t+'宽度为：'+s;
+//Location
+document.getElementById('demo4').innerHTML=window.location.hostname;
+var person=prompt("请输入您的姓名：");
+if (person!=null){
+    document.getElementById('demo').innerHTML="您好!"+person+'!今天过得怎么样';
+}
+</script>
+
+</body>
+</html>

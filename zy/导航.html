@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body{
+            background:pink;
+        }
+        #nav{
+            width: 900px;
+            height: 63px;
+            background: #fff;
+            text-align: 100px auto;
+            border-radius: 5px;
+            position: relative;
+        }        
+        #t_mall{
+            width: 88px;
+            height: 63px;
+            background: #ff0000;
+            position: absolute;
+            left:0;
+            top: 0;
+        }
+        ul{
+            position: relative;
+        }
+        ul li{
+            width: 88px;
+            height: 63px;
+            float: left;
+            text-align: center;
+            line-height: 63px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+    <span id="t_mall"></span>
+        <ul id="ul">
+            <li>双11狂欢</li>
+            <li>服装会场</li>
+            <li>数码家电</li>
+            <li>家具建材</li>
+            <li>母婴童装</li>
+            <li>手机会场</li>
+            <li>美妆会场</li>
+            <li>进口会场</li>
+            <li>飞猪旅行</li>
+        </ul>
+    
+    </div>
+    <script>
+        window.addEventListener('load',()=>{
+            let navList=$('ul').children;//获取全部导航标签
+            //console.log(navList);
+            //背景移动
+            let begin=0,end=0;
+            setInterval(
+                function(){
+                    begin+=(end-begin)*0.2;
+                    $('t_mall').style.left=begin+'px';
+                },20
+            );
+            //给每个鼠标绑定事件（就是确定begin和end的数值）
+            let beginX=0;
+            
+            for(let i=0;i<navList.length;i++){
+                let navLi=navList[i];
+                //1.监听鼠标进入
+                navLi.addEventListener('mouseenter',function(){
+                   end=this.offsetLeft;
+                   this.style.color="#fff";
+                   
+                });
+                
+                //2.监听鼠标离开
+                navLi.addEventListener('mouseout',function(){
+                    
+                    end=beginX;    
+                    this.style.color="#000";   
+                   
+                });
+                //3.监听鼠标点击
+                navLi.addEventListener('mousedown',function(){
+                    beginX=this.offsetLeft;
+                    
+                });
+            };
+            
+        
+        
+            //
+        })
+
+        //
+        function $(id){
+                return typeof(id)==="string"? document.getElementById(id) : null;
+            }
+    </script>
+</body>
+</html>

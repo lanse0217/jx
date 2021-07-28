@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+        }
+        li{
+            width: 100px;
+            height: 30px;
+            float: left;
+            background: #ccc;
+        }
+        .dom{
+            width: 500px;
+            height: 200px;
+            display: none;
+        }
+        .show{
+            background: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+    <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    </ul>
+    </div>
+    <div id="content">
+        <div class="dom">1</div>
+        <div class="dom">2</div>
+        <div class="dom">3</div>
+        <div class="dom">4</div>
+        <div class="dom">5</div>
+    </div>
+<script src="money.js"></script> 
+<script>
+  myTool.get();//myTool已经是window的方法了
+  myTool.send();
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let current=currentDate(new Date());
+        console.log(current);
+        function currentDate(d){
+           let Year=d.getFullYear();
+           let Mouth=d.getMonth()+1;
+           let Date=d.getDate();
+           let Day=d.getDay();
+           //设置格式
+           Mouth=Mouth<10? '0'+Mouth : Mouth;
+           Date= Date<10? '0'+Date :Date;
+           //Day =Day <10? '0'+Day :Day;
+           return `今天是${Year}年${Mouth}月${Date}号-礼拜${Day}`;
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type=" text">
+        var instance=null;
+        function Tool(){
+            if(instance){
+                return instance;
+            }
+            //instance初次进来为空则把this赋值给他，等第二次之后再进来就只走到这一步了
+            instance=this;//让变量instance存储了这个实例
+            this.name="zs";
+            this.intro="吃甜品";
+        }
+        //保证全局只有一个instance
+        let t1=new Tool();
+        let t2=new Tool();
+        let t3=new Tool();
+        console.log(t2);
+        console.log(t1===t2);//返回true
+    </script>
+    <script type=" text">
+    //解决办法,创建作用域——立即执行函数
+    (function(w){
+        var instance=null;
+        function Tool(){
+            if(instance){
+                return instance;
+            }
+            //instance初次进来为空则把this赋值给他
+            instance=this;
+            this.name="zs";
+            this.intro="吃甜品";
+        }
+        //对外界只暴露方法
+        w.Tool2=Tool;//方法就是这个函数
+
+    })(window);
+    let t1=new Tool2();
+    console.log(t1);
+    let t2=new Tool2();
+    let t3=new Tool2();
+    console.log(t1===t2);
+</script> 
+<script>
+    //闭包惰性函数
+    
+</script>
+</body>
+</html>
